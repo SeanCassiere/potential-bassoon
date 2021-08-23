@@ -45,10 +45,7 @@ createConnection()
 		await ChatConnection.create({ userId: john.userId, roomId: room2.roomId }).save();
 
 		await User.delete({ userId: john.userId });
-		console.log("Remaining users\n", await User.find());
-		console.log("Remaining connections\n", await ChatConnection.find());
-		console.log("Remaining rooms\n", await ChatRoom.find());
-
+		console.log("\nNo ChatConnections should remain\n", await ChatConnection.find(), "\n");
 		await ChatRoom.delete({ roomId: room2.roomId });
 		console.log("\n");
 	})
