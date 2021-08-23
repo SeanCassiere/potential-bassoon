@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany } from "typeorm";
 import { ChatConnection } from "./ChatConnection";
+import { Message } from "./Message";
 
 export type RoomType = "single" | "group";
 
@@ -16,4 +17,7 @@ export class ChatRoom extends BaseEntity {
 
 	@OneToMany(() => ChatConnection, (chat_connection) => chat_connection.room)
 	connections: ChatConnection[];
+
+	@OneToMany(() => Message, (chat_message) => chat_message.room)
+	messages: Message[];
 }
