@@ -69,7 +69,8 @@ createConnection()
 		console.log("\n--SELECT Alex and his connections\n");
 		const allAlexConns = await User.find({ where: { userId: alex.userId }, relations: ["connections"] });
 		console.log("\n-- all of Alex's connections\n", allAlexConns);
-		console.log(JSON.stringify(allAlexConns), "\n\n");
+		// console.log(JSON.stringify(allAlexConns), "\n\n");
+		console.log(await alex.getConnections());
 
 		console.log(`--delete the shared room || || ${sharedRoom.name} || ${sharedRoom.roomId}`);
 		await ChatRoom.delete({ roomId: sharedRoom.roomId });

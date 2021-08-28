@@ -14,4 +14,8 @@ export class User extends BaseEntity {
 
 	@OneToMany(() => Message, (chat_message) => chat_message.user)
 	messages: Message[];
+
+	public async getConnections() {
+		return await ChatConnection.find({ where: { userId: this.userId } });
+	}
 }
